@@ -1,15 +1,19 @@
 #include "tcpserverd.h"
 #include "../tcpserver_api.h"
+#include <string>
 using namespace boost::asio::ip;
 namespace network
 {
 class Session : public std::enable_shared_from_this<Session> {
     public:
-        Session(tcp::socket socket, const TCPServerParam& tcp_server_param) 
-        : socket_(std::move(socket)) 
+        Session(tcp::socket socket_remote, const TCPServerParam& tcp_server_param) 
+        : socket_(std::move(socket_remote)) 
         {
             tcp_server_param_ = tcp_server_param;
-            tcp_server_param_.tcp_server_callback(1, "12", 12, std::string(), tcp_server_param_.ptr_userdata);
+            std::string str1;
+            remote_ip_ = socket_.remote_endpoint().address().to_string();
+            remote_port_ = socket_.remote_endpoint().port();
+            tcp_server_param_.tcp_server_callback(1, remote_ip_, remote_port_, std::string(), tcp_server_param_.ptr_userdata);
         }
 
         void start() {
@@ -24,7 +28,8 @@ class Session : public std::enable_shared_from_this<Session> {
                     if (!ec) {
                         std::string str_receive;
                         str_receive.assign(data_, length);
-                        std::string reply = tcp_server_param_.tcp_server_callback(0, "12", 12, 
+                        std::string reply = tcp_server_param_.tcp_server_callback(0, 
+                            remote_ip_, remote_port_, 
                             str_receive, 
                             tcp_server_param_.ptr_userdata);
                         do_write(reply);
@@ -32,8 +37,8 @@ class Session : public std::enable_shared_from_this<Session> {
                     }
                     else{
                         tcp_server_param_.tcp_server_callback(2, 
-                            "12", 
-                            12, std::string(), 
+                            remote_ip_, 
+                            remote_port_, std::string(), 
                         tcp_server_param_.ptr_userdata);
                     }
                 });
@@ -50,6 +55,13 @@ class Session : public std::enable_shared_from_this<Session> {
                 [this, self](boost::system::error_code ec, std::size_t /*length*/) {
                     if (!ec) {
                     }
+                    else
+                    {
+                        tcp_server_param_.tcp_server_callback(2, 
+                            remote_ip_, 
+                            remote_port_, std::string(), 
+                        tcp_server_param_.ptr_userdata);
+                    }
                 });
         }
     
@@ -57,6 +69,8 @@ class Session : public std::enable_shared_from_this<Session> {
         enum { max_length = 1024 };
         char data_[max_length];
         TCPServerParam tcp_server_param_;
+        std::string remote_ip_;
+        int remote_port_ = 0;
     };
 
     CTCPServerd::CTCPServerd()

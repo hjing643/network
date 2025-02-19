@@ -15,7 +15,7 @@ std::string TCPServerCallback(int type,
             std::cout<< "receive connect:" << client_ip << ":"<<client_port << std::endl;
             /* code */
         }
-        else if (type == 1)
+        else if (type == 2)
         {
             std::cout<< "receive disconnect:" << client_ip << ":"<<client_port << std::endl;
             /* code */
@@ -41,7 +41,7 @@ int main() {
 
         //network::CTCPServerd* ptr_global = new network::CTCPServerd();
         //ptr_global->StartServer(tcp_server_param);
-	std::cout<<"test"<<std::end;
+	std::cout<<"test"<<std::endl;
         getchar();
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;

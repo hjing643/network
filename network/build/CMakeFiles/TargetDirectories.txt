@@ -1,0 +1,3 @@
+/home/ec2-user/gitpath/network/build/CMakeFiles/network_program.dir
+/home/ec2-user/gitpath/network/build/CMakeFiles/edit_cache.dir
+/home/ec2-user/gitpath/network/build/CMakeFiles/rebuild_cache.dir
