@@ -41,7 +41,7 @@ int main() {
 
         //network::CTCPServerd* ptr_global = new network::CTCPServerd();
         //ptr_global->StartServer(tcp_server_param);
-
+	std::cout<<"test"<<std::end;
         getchar();
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
