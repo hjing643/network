@@ -1169,5 +1169,4 @@ CMakeFiles/network_program.dir/src/network.cpp.o: \
  /usr/local/include/boost/asio/write_at.hpp \
  /usr/local/include/boost/asio/impl/write_at.hpp \
  /home/ec2-user/gitpath/network/src/include/tcpserver_api.h \
- /home/ec2-user/gitpath/network/src/include/networkcom.h \
- /home/ec2-user/gitpath/network/src/include/includeall.h
+ /home/ec2-user/gitpath/network/src/include/networkcom.h

@@ -1,5 +1,5 @@
 #pragma once
-#include "includeall.h"
+#include <string>
 namespace network
 {
     // type[0-data,1-connect,2-disconnect]

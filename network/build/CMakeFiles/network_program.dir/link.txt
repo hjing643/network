@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/network_program.dir/src/include/private/tcpserverd.cpp.o CMakeFiles/network_program.dir/src/network.cpp.o -o network_program 
+/usr/bin/c++ -fPIC -g -shared -Wl,-soname,libnetwork_program.so -o libnetwork_program.so CMakeFiles/network_program.dir/src/include/private/tcpserverd.cpp.o CMakeFiles/network_program.dir/src/network.cpp.o 
