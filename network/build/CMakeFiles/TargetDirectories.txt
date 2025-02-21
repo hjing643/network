@@ -1,7 +1,0 @@
-/home/ec2-user/gitpath/network/build/CMakeFiles/network_program.dir
-/home/ec2-user/gitpath/network/build/CMakeFiles/edit_cache.dir
-/home/ec2-user/gitpath/network/build/CMakeFiles/rebuild_cache.dir
-/home/ec2-user/gitpath/network/build/CMakeFiles/list_install_components.dir
-/home/ec2-user/gitpath/network/build/CMakeFiles/install.dir
-/home/ec2-user/gitpath/network/build/CMakeFiles/install/local.dir
-/home/ec2-user/gitpath/network/build/CMakeFiles/install/strip.dir
